@@ -1,5 +1,6 @@
 class FollowRequestsController < ApplicationController
   before_action :set_follow_request, only: %i[ show edit update destroy ]
+  before_action :ensure_current_user_is_author, only:[:destroy, :update, :edit]
 
   # GET /follow_requests or /follow_requests.json
   def index
